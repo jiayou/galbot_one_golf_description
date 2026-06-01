@@ -1,0 +1,172 @@
+{
+  "leg_joint1": {
+    "joint_class": "leg_joint",
+    "actuator_type": "position",
+    "kp": 120000,
+    "kv": 12000,
+    "ctrlrange": [0.0, 0.9374]
+  },
+  "leg_joint2": {
+    "joint_class": "leg_joint",
+    "actuator_type": "position",
+    "kp": 120000,
+    "kv": 12000,
+    "ctrlrange": [0.0, 2.5847]
+  },
+  "leg_joint3": {
+    "joint_class": "leg_joint",
+    "actuator_type": "position",
+    "kp": 57000,
+    "kv": 5700,
+    "ctrlrange": [0.0, 2.3262],
+    "forcerange": [-420, 420]
+  },
+  "leg_joint4": {
+    "joint_class": "leg_joint",
+    "actuator_type": "position",
+    "kp": 16000,
+    "kv": 1600,
+    "ctrlrange": [-1.5906, 1.5906],
+    "forcerange": [-150, 150]
+  },
+  "leg_joint5": {
+    "joint_class": "leg_joint",
+    "actuator_type": "position",
+    "kp": 16000,
+    "kv": 1600,
+    "ctrlrange": [-0.1645, 0.1645],
+    "forcerange": [-150, 150]
+  },
+  "head_joint1": {
+    "joint_class": "head_joint",
+    "actuator_type": "position",
+    "kp": 3400,
+    "kv": 340,
+    "ctrlrange": [-1.5208, 1.5208]
+  },
+  "head_joint2": {
+    "joint_class": "head_joint",
+    "actuator_type": "position",
+    "kp": 3400,
+    "kv": 340,
+    "ctrlrange": [-0.2143461, 0.4935988]
+  },
+  "right_arm_joint1": {
+    "joint_class": "arm_joint_upper",
+    "actuator_type": "position",
+    "kp": 15000,
+    "kv": 1500,
+    "ctrlrange": [-3.00432619, 3.00432619],
+    "forcerange": [-60, 60]
+  },
+  "right_arm_joint2": {
+    "joint_class": "arm_joint_upper",
+    "actuator_type": "position",
+    "kp": 15000,
+    "kv": 1500,
+    "ctrlrange": [-1.608062789, 1.608062789],
+    "forcerange": [-60, 60]
+  },
+  "right_arm_joint3": {
+    "joint_class": "arm_joint_lower",
+    "actuator_type": "position",
+    "kp": 7000,
+    "kv": 700,
+    "ctrlrange": [-2.916972222, 2.916972222],
+    "forcerange": [-30, 30]
+  },
+  "right_arm_joint4": {
+    "joint_class": "arm_joint_lower",
+    "actuator_type": "position",
+    "kp": 7000,
+    "kv": 700,
+    "ctrlrange": [-1.869862177, 2.5679938779914944],
+    "forcerange": [-30, 30]
+  },
+  "right_arm_joint5": {
+    "joint_class": "arm_joint_lower",
+    "actuator_type": "position",
+    "kp": 3500,
+    "kv": 350,
+    "ctrlrange": [-2.916972222, 2.916972222],
+    "forcerange": [-10, 10]
+  },
+  "right_arm_joint6": {
+    "joint_class": "arm_joint_lower",
+    "actuator_type": "position",
+    "kp": 3500,
+    "kv": 350,
+    "ctrlrange": [-0.7353981633974483, 0.8226646259971648],
+    "forcerange": [-10, 10]
+  },
+  "right_arm_joint7": {
+    "joint_class": "arm_joint_lower",
+    "actuator_type": "position",
+    "kp": 3500,
+    "kv": 350,
+    "ctrlrange": [-1.538202778, 1.538202778],
+    "forcerange": [-10, 10]
+  },
+  "left_arm_joint1": {
+    "joint_class": "arm_joint_upper",
+    "actuator_type": "position",
+    "kp": 15000,
+    "kv": 1500,
+    "ctrlrange": [-3.00432619, 3.00432619]
+  },
+  "left_arm_joint2": {
+    "joint_class": "arm_joint_upper",
+    "actuator_type": "position",
+    "kp": 15000,
+    "kv": 1500,
+    "ctrlrange": [-1.608062789, 1.608062789]
+  },
+  "left_arm_joint3": {
+    "joint_class": "arm_joint_lower",
+    "actuator_type": "position",
+    "kp": 7000,
+    "kv": 700,
+    "ctrlrange": [-2.916972222, 2.916972222]
+  },
+  "left_arm_joint4": {
+    "joint_class": "arm_joint_lower",
+    "actuator_type": "position",
+    "kp": 7000,
+    "kv": 700,
+    "ctrlrange": [-2.5679938779914944, 1.869862177]
+  },
+  "left_arm_joint5": {
+    "joint_class": "arm_joint_lower",
+    "actuator_type": "position",
+    "kp": 3500,
+    "kv": 350,
+    "ctrlrange": [-2.916972222, 2.916972222],
+    "forcerange": [-10, 10]
+  },
+  "left_arm_joint6": {
+    "joint_class": "arm_joint_lower",
+    "actuator_type": "position",
+    "kp": 3500,
+    "kv": 350,
+    "ctrlrange": [-0.8226646259971648, 0.7353981633974483],
+    "forcerange": [-10, 10]
+  },
+  "left_arm_joint7": {
+    "joint_class": "arm_joint_lower",
+    "actuator_type": "position",
+    "kp": 3500,
+    "kv": 350,
+    "ctrlrange": [-1.538202778, 1.538202778],
+    "forcerange": [-10, 10]
+  },
+  "right_gripper_joint": {
+    "joint_class": "gripper_joint",
+    "actuator_type": "position",
+    "ctrlrange": [0.0, 1.703]
+  },
+  "left_gripper_joint": {
+    "joint_class": "gripper_joint",
+    "actuator_type": "position",
+    "ctrlrange": [0.0, 1.703]
+  }
+}

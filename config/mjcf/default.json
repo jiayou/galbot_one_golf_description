@@ -1,0 +1,81 @@
+{
+  "base_joint": {
+    "joint": {
+      "armature": 0.001,
+      "damping": 0.0,
+      "frictionloss": 0.0
+    },
+    "actuator": {}
+  },
+  "leg_joint": {
+    "joint": {
+      "armature": 0.001,
+      "stiffness": 0.05,
+      "damping": 0.5,
+      "frictionloss": 0.5
+    },
+    "actuator": {
+      "actuator_type": "position",
+      "kp": 10000,
+      "kv": 2000,
+      "forcerange": [-845, 845]
+    }
+  },
+  "head_joint": {
+    "joint": {
+      "armature": 0.001,
+      "stiffness": 0.05,
+      "damping": 0.5,
+      "frictionloss": 0.5
+    },
+    "actuator": {
+      "actuator_type": "position",
+      "kp": 500,
+      "kv": 100,
+      "forcerange": [-4, 4]
+    }
+  },
+  "arm_joint_upper": {
+    "joint": {
+      "armature": 0.001,
+      "stiffness": 0.05,
+      "damping": 0.5,
+      "frictionloss": 0.5
+    },
+    "actuator": {
+      "actuator_type": "position",
+      "kp": 3000,
+      "kv": 500,
+      "forcerange": [-60, 60]
+    }
+  },
+  "arm_joint_lower": {
+    "joint": {
+      "armature": 0.001,
+      "stiffness": 0.05,
+      "damping": 0.5,
+      "frictionloss": 0.5
+    },
+    "actuator": {
+      "actuator_type": "position",
+      "kp": 1500,
+      "kv": 300,
+      "forcerange": [-30, 30]
+    }
+  },
+  "gripper_joint": {
+    "joint": {
+      "armature": 0.001,
+      "stiffness": 0.05,
+      "damping": 0.5,
+      "frictionloss": 0.5
+    },
+    "actuator": {
+      "actuator_type": "position",
+      "kp": 100,
+      "kv": 20,
+      "ctrlrange": [0.0, 1.703],
+      "forcerange": [-5, 5]
+    }
+  }
+}

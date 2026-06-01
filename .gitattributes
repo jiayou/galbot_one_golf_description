@@ -1,0 +1,8 @@
+# Keep the ROS 2 URDF package usable without Git LFS. The meshes/ directory is
+# referenced directly by URDF/xacro and is stored in regular Git.
+
+# Optional full-model assets are fetched with Git LFS.
+mjcf/meshes/**/*.obj filter=lfs diff=lfs merge=lfs -text
+mjcf/meshes/**/*.stl filter=lfs diff=lfs merge=lfs -text
+mjcf/meshes/**/*.png filter=lfs diff=lfs merge=lfs -text
+usd/configuration/galbot_one_golf_base.usdc filter=lfs diff=lfs merge=lfs -text

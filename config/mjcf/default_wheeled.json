@@ -1,0 +1,15 @@
+{
+  "wheel_joint": {
+    "joint": {
+      "armature": 0.01,
+      "damping": 0.1,
+      "frictionloss": 0.02
+    },
+    "actuator": {
+      "actuator_type": "velocity",
+      "kv": 50,
+      "ctrlrange": [-25, 25],
+      "forcerange": [-120, 120]
+    }
+  }
+}

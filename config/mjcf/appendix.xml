@@ -1,0 +1,32 @@
+  <option integrator="implicitfast" />
+
+  <sensor>
+    <jointvel name="vel_wheel1_joint" joint="wheel1_joint"/>
+    <jointvel name="vel_wheel2_joint" joint="wheel2_joint"/>
+    <jointvel name="vel_wheel3_joint" joint="wheel3_joint"/>
+    <jointvel name="vel_wheel4_joint" joint="wheel4_joint"/>
+    <jointvel name="vel_leg_joint1" joint="leg_joint1"/>
+    <jointvel name="vel_leg_joint2" joint="leg_joint2"/>
+    <jointvel name="vel_leg_joint3" joint="leg_joint3"/>
+    <jointvel name="vel_leg_joint4" joint="leg_joint4"/>
+    <jointvel name="vel_leg_joint5" joint="leg_joint5"/>
+    <jointvel name="vel_head_joint1" joint="head_joint1"/>
+    <jointvel name="vel_head_joint2" joint="head_joint2"/>
+    <jointvel name="vel_right_arm_joint1" joint="right_arm_joint1"/>
+    <jointvel name="vel_right_arm_joint2" joint="right_arm_joint2"/>
+    <jointvel name="vel_right_arm_joint3" joint="right_arm_joint3"/>
+    <jointvel name="vel_right_arm_joint4" joint="right_arm_joint4"/>
+    <jointvel name="vel_right_arm_joint5" joint="right_arm_joint5"/>
+    <jointvel name="vel_right_arm_joint6" joint="right_arm_joint6"/>
+    <jointvel name="vel_right_arm_joint7" joint="right_arm_joint7"/>
+    <jointvel name="vel_left_arm_joint1" joint="left_arm_joint1"/>
+    <jointvel name="vel_left_arm_joint2" joint="left_arm_joint2"/>
+    <jointvel name="vel_left_arm_joint3" joint="left_arm_joint3"/>
+    <jointvel name="vel_left_arm_joint4" joint="left_arm_joint4"/>
+    <jointvel name="vel_left_arm_joint5" joint="left_arm_joint5"/>
+    <jointvel name="vel_left_arm_joint6" joint="left_arm_joint6"/>
+    <jointvel name="vel_left_arm_joint7" joint="left_arm_joint7"/>
+  </sensor>
+
+  <contact>
+  </contact>

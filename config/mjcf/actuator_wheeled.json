@@ -1,0 +1,30 @@
+{
+  "wheel1_joint": {
+    "joint_class": "wheel_joint",
+    "actuator_type": "velocity",
+    "kv": 50,
+    "ctrlrange": [-25, 25],
+    "forcerange": [-120, 120]
+  },
+  "wheel2_joint": {
+    "joint_class": "wheel_joint",
+    "actuator_type": "velocity",
+    "kv": 50,
+    "ctrlrange": [-25, 25],
+    "forcerange": [-120, 120]
+  },
+  "wheel3_joint": {
+    "joint_class": "wheel_joint",
+    "actuator_type": "velocity",
+    "kv": 50,
+    "ctrlrange": [-25, 25],
+    "forcerange": [-120, 120]
+  },
+  "wheel4_joint": {
+    "joint_class": "wheel_joint",
+    "actuator_type": "velocity",
+    "kv": 50,
+    "ctrlrange": [-25, 25],
+    "forcerange": [-120, 120]
+  }
+}

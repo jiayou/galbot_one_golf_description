@@ -1,0 +1,37 @@
+  <option integrator="implicitfast" />
+
+  <actuator>
+    <velocity ctrllimited="true" ctrlrange="-1.00 1.00" joint="base_x_joint" kv="1000000" name="base_x_joint" forcelimited="true" forcerange="-600000 600000" />
+    <velocity ctrllimited="true" ctrlrange="-1.00 1.00" joint="base_y_joint" kv="1000000" name="base_y_joint" forcelimited="true" forcerange="-600000 600000" />
+    <velocity ctrllimited="true" ctrlrange="-4.00 4.00" joint="base_yaw_joint" kv="1000000" name="base_yaw_joint" forcelimited="true" forcerange="-600000 600000" />
+  </actuator>
+
+  <sensor>
+    <jointvel name="vel_base_x_joint" joint="base_x_joint"/>
+    <jointvel name="vel_base_y_joint" joint="base_y_joint"/>
+    <jointvel name="vel_base_yaw_joint" joint="base_yaw_joint"/>
+    <jointvel name="vel_leg_joint1" joint="leg_joint1"/>
+    <jointvel name="vel_leg_joint2" joint="leg_joint2"/>
+    <jointvel name="vel_leg_joint3" joint="leg_joint3"/>
+    <jointvel name="vel_leg_joint4" joint="leg_joint4"/>
+    <jointvel name="vel_leg_joint5" joint="leg_joint5"/>
+    <jointvel name="vel_head_joint1" joint="head_joint1"/>
+    <jointvel name="vel_head_joint2" joint="head_joint2"/>
+    <jointvel name="vel_right_arm_joint1" joint="right_arm_joint1"/>
+    <jointvel name="vel_right_arm_joint2" joint="right_arm_joint2"/>
+    <jointvel name="vel_right_arm_joint3" joint="right_arm_joint3"/>
+    <jointvel name="vel_right_arm_joint4" joint="right_arm_joint4"/>
+    <jointvel name="vel_right_arm_joint5" joint="right_arm_joint5"/>
+    <jointvel name="vel_right_arm_joint6" joint="right_arm_joint6"/>
+    <jointvel name="vel_right_arm_joint7" joint="right_arm_joint7"/>
+    <jointvel name="vel_left_arm_joint1" joint="left_arm_joint1"/>
+    <jointvel name="vel_left_arm_joint2" joint="left_arm_joint2"/>
+    <jointvel name="vel_left_arm_joint3" joint="left_arm_joint3"/>
+    <jointvel name="vel_left_arm_joint4" joint="left_arm_joint4"/>
+    <jointvel name="vel_left_arm_joint5" joint="left_arm_joint5"/>
+    <jointvel name="vel_left_arm_joint6" joint="left_arm_joint6"/>
+    <jointvel name="vel_left_arm_joint7" joint="left_arm_joint7"/>
+  </sensor>
+
+  <contact>
+  </contact>

@@ -1,0 +1,27 @@
+{
+  "add_floor": true,
+  "freejoint": false,
+  "extra_joints": [
+    {
+      "body_name": "base_footprint",
+      "name": "base_x_joint",
+      "type": "slide",
+      "axis": [1, 0, 0],
+      "joint_class": "base_joint"
+    },
+    {
+      "body_name": "base_footprint",
+      "name": "base_y_joint",
+      "type": "slide",
+      "axis": [0, 1, 0],
+      "joint_class": "base_joint"
+    },
+    {
+      "body_name": "base_footprint",
+      "name": "base_yaw_joint",
+      "type": "hinge",
+      "axis": [0, 0, 1],
+      "joint_class": "base_joint"
+    }
+  ]
+}
