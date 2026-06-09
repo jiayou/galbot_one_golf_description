@@ -1,3 +1,42 @@
+# Galbot G1 Web Visualization
+
+## Quick Start
+```sh
+git clone https://github.com/jiayou/galbot_one_golf_description.git
+cd galbot_one_golf_description
+# git checkout webviz
+git lfs pull
+python3 -m http.server
+```
+
+Open http://localhost:8000/web in browser
+![demo](web/demo.png)
+
+Or, use quick view:
+http://localhost:8000/web/quick_view.html?joint=1,2,1,0,0
+
+## Integrate into your project
+
+```html
+<iframe id="viewer" src="http://your-server/web/galbot_g1.html" style="width: 400px; height: 500px;"></iframe>
+```
+
+```js
+const viewer = document.getElementById('viewer');
+viewer.onload = function() {
+  viewer.contentWindow.postMessage({
+    type: "setJoints",
+    joints: {
+      "leg_joint1": 1.0,
+      "leg_joint2": 2.0,
+      "leg_joint3": 1.0,
+      //...
+    } 
+  }, "*");
+}
+
+```
+
 # Galbot One Golf Description
 
 ![Galbot One Golf](docs/.images/galbot_one_golf_render.png)

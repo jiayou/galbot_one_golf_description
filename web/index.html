@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galbot G1 Controller</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { display: flex; height: 100vh; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #1a1a2e; color: #e0e0e0; }
+#viewer { flex: 1; border: none; }
+#panel {
+    width: 400px; min-width: 400px; background: #16213e;
+    padding: 10px 14px; overflow-y: auto; border-left: 1px solid #0f3460;
+    display: flex; flex-direction: column; gap: 4px;
+}
+#panel h2 { font-size: 15px; color: #e94560; margin-bottom: 2px; }
+.group-label {
+    font-size: 11px; color: #6080a0; text-transform: uppercase;
+    letter-spacing: 1px; margin-top: 6px; margin-bottom: 1px;
+    padding-left: 2px; border-bottom: 1px solid #0f3460; padding-bottom: 2px;
+}
+.joint-control {
+    background: #0f3460; border-radius: 3px; padding: 6px 8px;
+    display: flex; align-items: center; gap: 6px;
+}
+.joint-control .name {
+    font-size: 10px; color: #a0a0c0; white-space: nowrap; min-width: 58px;
+}
+.joint-control .slider-wrap {
+    flex: 1; display: flex; flex-direction: column; gap: 0;
+}
+.joint-control input[type="range"] {
+    width: 100%; height: 3px; -webkit-appearance: none; appearance: none;
+    background: #1a1a2e; border-radius: 2px; outline: none;
+}
+.joint-control .limits {
+    display: flex; justify-content: space-between;
+    font-size: 8px; color: #505070;
+    font-family: "SF Mono", "Fira Code", monospace;
+    line-height: 1; margin-top: 3px;
+}
+.joint-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 10px; height: 10px;
+    border-radius: 50%; background: #e94560; cursor: pointer;
+}
+.joint-control input[type="range"]::-moz-range-thumb {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #e94560; cursor: pointer; border: none;
+}
+.joint-control .value {
+    font-family: "SF Mono", "Fira Code", monospace; color: #e94560;
+    font-size: 9px; white-space: nowrap; min-width: 72px; text-align: right;
+}
+#resetBtn {
+    margin-top: 6px; padding: 6px; border: none; border-radius: 4px;
+    background: #e94560; color: white; font-size: 12px; cursor: pointer;
+    transition: background 0.2s;
+}
+#resetBtn:hover { background: #c73652; }
+</style>
+</head>
+<body>
+<iframe id="viewer" src="galbot_g1.html"></iframe>
+<div id="panel">
+    <h2>Joint Controller</h2>
+    <div id="jointControls"></div>
+    <button id="resetBtn">Reset All Joints</button>
+</div>
+
+<script>
+const jointGroups = [
+    {
+        label: "Leg",
+        joints: [
+            { name: "leg_joint1", label: "Leg J1", min: 0.0, max: 0.9374 },
+            { name: "leg_joint2", label: "Leg J2", min: 0.0, max: 2.5847 },
+            { name: "leg_joint3", label: "Leg J3", min: 0.0, max: 2.3262 },
+            { name: "leg_joint4", label: "Leg J4", min: -1.5906, max: 1.5906 },
+            { name: "leg_joint5", label: "Leg J5", min: -0.1645, max: 0.1645 }
+        ]
+    },
+    {
+        label: "Head",
+        joints: [
+            { name: "head_joint1", label: "Head J1", min: -1.5208, max: 1.5208 },
+            { name: "head_joint2", label: "Head J2", min: -0.2143461, max: 0.4935988 }
+        ]
+    },
+    {
+        label: "Left Arm",
+        joints: [
+            { name: "left_arm_joint1", label: "L.Arm J1", min: -3.0043, max: 3.0043 },
+            { name: "left_arm_joint2", label: "L.Arm J2", min: -1.6081, max: 1.6081 },
+            { name: "left_arm_joint3", label: "L.Arm J3", min: -2.91697, max: 2.91697 },
+            { name: "left_arm_joint4", label: "L.Arm J4", min: -1.86986, max: 2.56799 },
+            { name: "left_arm_joint5", label: "L.Arm J5", min: -2.91697, max: 2.91697 },
+            { name: "left_arm_joint6", label: "L.Arm J6", min: -0.7354, max: 0.8227 },
+            { name: "left_arm_joint7", label: "L.Arm J7", min: -1.5382, max: 1.5382 }
+        ]
+    },
+    {
+        label: "Right Arm",
+        joints: [
+            { name: "right_arm_joint1", label: "R.Arm J1", min: -3.0043, max: 3.0043 },
+            { name: "right_arm_joint2", label: "R.Arm J2", min: -1.6081, max: 1.6081 },
+            { name: "right_arm_joint3", label: "R.Arm J3", min: -2.91697, max: 2.91697 },
+            { name: "right_arm_joint4", label: "R.Arm J4", min: -1.86986, max: 2.56799 },
+            { name: "right_arm_joint5", label: "R.Arm J5", min: -2.91697, max: 2.91697 },
+            { name: "right_arm_joint6", label: "R.Arm J6", min: -0.7354, max: 0.8227 },
+            { name: "right_arm_joint7", label: "R.Arm J7", min: -1.5382, max: 1.5382 }
+        ]
+    }
+];
+
+const viewer = document.getElementById("viewer");
+const controlsDiv = document.getElementById("jointControls");
+const jointValues = {};
+const allJoints = [];
+
+jointGroups.forEach(group => {
+    allJoints.push(...group.joints);
+
+    const groupLabel = document.createElement("div");
+    groupLabel.className = "group-label";
+    groupLabel.textContent = group.label;
+    controlsDiv.appendChild(groupLabel);
+
+    group.joints.forEach(joint => {
+        jointValues[joint.name] = 0.0;
+
+        const div = document.createElement("div");
+        div.className = "joint-control";
+
+        const name = document.createElement("span");
+        name.className = "name";
+        name.textContent = joint.label;
+
+        const sliderWrap = document.createElement("div");
+        sliderWrap.className = "slider-wrap";
+
+        const input = document.createElement("input");
+        input.type = "range";
+        input.id = "slider_" + joint.name;
+        input.min = joint.min;
+        input.max = joint.max;
+        input.step = 0.0001;
+        input.value = 0.0;
+
+        const limits = document.createElement("div");
+        limits.className = "limits";
+        limits.innerHTML = "<span>" + joint.min.toFixed(2) + "</span><span>" + joint.max.toFixed(2) + "</span>";
+
+        sliderWrap.appendChild(input);
+        sliderWrap.appendChild(limits);
+
+        const val = document.createElement("span");
+        val.className = "value";
+        val.id = "val_" + joint.name;
+        val.textContent = "0.0000 rad";
+
+        input.addEventListener("input", () => {
+            const v = parseFloat(input.value);
+            jointValues[joint.name] = v;
+            val.textContent = v.toFixed(4) + " rad";
+            sendJoints();
+        });
+
+        div.appendChild(name);
+        div.appendChild(sliderWrap);
+        div.appendChild(val);
+        controlsDiv.appendChild(div);
+    });
+});
+
+function sendJoints() {
+    viewer.contentWindow.postMessage({
+        type: "setJoints",
+        joints: jointValues
+    }, "*");
+}
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+    allJoints.forEach(joint => {
+        jointValues[joint.name] = 0.0;
+        document.getElementById("slider_" + joint.name).value = 0.0;
+        document.getElementById("val_" + joint.name).textContent = "0.0000 rad";
+    });
+    sendJoints();
+});
+</script>
+</body>
+</html>

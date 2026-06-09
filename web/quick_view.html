@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galbot G1 Quick View</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 100vw; height: 100vh; overflow: hidden; }
+iframe { width: 100%; height: 100%; border: none; }
+</style>
+</head>
+<body>
+<iframe id="viewer" src="galbot_g1.html"></iframe>
+<script>
+const JOINT_NAMES = [
+    "leg_joint1", "leg_joint2", "leg_joint3", "leg_joint4", "leg_joint5",
+    "head_joint1", "head_joint2",
+    "left_arm_joint1", "left_arm_joint2", "left_arm_joint3", "left_arm_joint4", "left_arm_joint5", "left_arm_joint6", "left_arm_joint7",
+    "right_arm_joint1", "right_arm_joint2", "right_arm_joint3", "right_arm_joint4", "right_arm_joint5", "right_arm_joint6", "right_arm_joint7"
+];
+
+const viewer = document.getElementById("viewer");
+
+// 解析URL参数
+const params = new URLSearchParams(window.location.search);
+const jointParam = params.get("joint");
+
+if (jointParam) {
+    const values = jointParam.split(",").map(v => parseFloat(v.trim()));
+    const joints = {};
+    JOINT_NAMES.forEach((name, i) => {
+        if (i < values.length && !isNaN(values[i])) {
+            joints[name] = values[i];
+        }
+    });
+
+    // iframe加载完成后立即发送关节角度
+    // index.html会将值存入window.joint_values，机器人加载时自动应用
+    viewer.addEventListener("load", () => {
+        viewer.contentWindow.postMessage({
+            type: "setJoints",
+            joints: joints
+        }, "*");
+    });
+}
+</script>
+</body>
+</html>
