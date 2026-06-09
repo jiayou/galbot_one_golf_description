@@ -1115,7 +1115,7 @@
     <origin rpy="-1.5707963267948966 -1.5707963267948966 0" xyz="0 0.37711 0"/>
     <parent link="torso_base_link"/>
     <child link="torso_head_mount_link"/>
-    <axis/>
+    <axis xyz="0 0 1"/>
   </joint>
   <joint name="head_joint" type="fixed">
     <parent link="torso_head_mount_link"/>
@@ -1183,7 +1183,7 @@
   <joint name="head_end_effector_mount_joint" type="fixed">
     <parent link="head_link2"/>
     <child link="head_end_effector_mount_link"/>
-    <axis/>
+    <axis xyz="0 0 1"/>
   </joint>
   <!-- Left Arm Mount -->
   <link name="torso_left_arm_mount_link"/>
@@ -1191,7 +1191,7 @@
     <origin rpy="0 1.5707963267948966 0" xyz="0.20843 0.172 0"/>
     <parent link="torso_base_link"/>
     <child link="torso_left_arm_mount_link"/>
-    <axis/>
+    <axis xyz="0 0 1"/>
   </joint>
   <!-- Right Arm Mount -->
   <link name="torso_right_arm_mount_link"/>
@@ -1199,7 +1199,7 @@
     <origin rpy="3.141592653589793 1.5707963267948966 0" xyz="-0.20843 0.172 0"/>
     <parent link="torso_base_link"/>
     <child link="torso_right_arm_mount_link"/>
-    <axis/>
+    <axis xyz="0 0 1"/>
   </joint>
   <joint name="right_arm_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0"/>
